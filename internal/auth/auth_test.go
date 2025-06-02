@@ -89,9 +89,9 @@ func TestGetAPIKey(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Logf("Testing case: %s", tt.name)
 			t.Logf("Input headers: %+v", tt.headers)
-			
+
 			apiKey, err := GetAPIKey(tt.headers)
-			
+
 			t.Logf("Got apiKey: '%s'", apiKey)
 			t.Logf("Got error: %v", err)
 			t.Logf("Expected apiKey: '%s'", tt.expectedAPIKey)
@@ -130,7 +130,7 @@ func BenchmarkGetAPIKey(b *testing.B) {
 	headers := http.Header{
 		"Authorization": []string{"ApiKey abc123def456"},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		_, _ = GetAPIKey(headers)
